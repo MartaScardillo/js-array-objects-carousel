@@ -35,6 +35,14 @@ section {
     display: block;
 }
 
+.details {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    text-align: end;
+}
+
 .arrow {
     position: absolute;
     width: 36px;

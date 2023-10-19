@@ -25,3 +25,55 @@ const images = [
         text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
     },
 ];
+
+const carouselDOMElement = document.querySelector('.carousel');
+console.log(carouselDOMElement);
+
+for (let i = 0; i < images.length; i++) {
+    console.log(images[i]);
+    const image = images[i];
+
+    const html = ` 
+        <div class="carousel_item">                  
+                <img class="carousel_img" src="./${image.image}" class="card-img-top" />
+                <div class="details">
+                    <h3 class="title">${image.title}</h3>
+                    <p class="text">${image.text}</p>
+                </div>
+        </div> `;
+
+    carouselDOMElement.innerHTML += html;
+    // console.log(carouselDOMElement)
+}
+
+const itemsDOMElements = document.querySelectorAll('.carousel_item')
+console.log(itemsDOMElements)
+
+let currentIndex = 0
+
+let currentSlide = itemsDOMElements[currentIndex]
+currentSlide.classList.add('active')
+
+
+const arrowLeft = document.querySelector('.carousel .arrow--left')
+const arrowRight = document.querySelector('.carousel .arrow--right')
+
+arrowLeft.addEventListener('click', function () {
+  console.log('click left')
+  console.log(itemsDOMElements[currentIndex])
+  itemsDOMElements[currentIndex].classList.remove('active')
+  currentIndex = (currentIndex - 1 + itemsDOMElements.length) % itemsDOMElements.length
+  itemsDOMElements[currentIndex].classList.add('active')
+  console.log(itemsDOMElements)
+
+})
+
+arrowRight.addEventListener('click', function () {
+  console.log('click bottom')
+  console.log(itemsDOMElements[currentIndex])
+  itemsDOMElements[currentIndex].classList.remove('active')
+  currentIndex = (currentIndex + 1) % itemsDOMElements.length
+  itemsDOMElements[currentIndex].classList.add('active')
+  console.log(itemsDOMElements)
+
+})
